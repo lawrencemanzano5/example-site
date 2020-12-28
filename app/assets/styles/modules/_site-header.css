@@ -22,7 +22,7 @@
 
         @mixin atMedium {
             left: auto;
-            transform: tranlateX(0);
+            transform: translateX(0);
             padding: 25px 36px;
         }
     }
