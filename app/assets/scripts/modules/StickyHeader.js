@@ -41,22 +41,12 @@ class StickyHeader {
     }
 
     calcSection(el) {
-        if (el.id == "our-beginning") {
-            console.log("window scrollY: " + window.scrollY);
-            console.log("browser height: " + this.browserHeight);
-            console.log(el.id + " offsetTop: " + el.offsetTop);
-        }
-
         /* First part of the condition: the sum of scrollY and browserHeight equals the pixel distance (travelled) from the top of the HTML page content up to the bottom
            of the viewport hence first condition proves true when the bottom of the viewport crosses the the top edge of the el element (i.e. becomes visible in the 
            viewport) */
         /* Second part of the condition: the sum of the el element's offsetTop and offsetHeight equals the distance from the top of the HTML page to the bottom of the
            of its section hence the second condition proves true when the user has only scrolled so far such that it is still in the viewport */
         if (window.scrollY + this.browserHeight > el.offsetTop && window.scrollY < el.offsetTop + el.offsetHeight) {
-
-            if (el.id == "our-beginning") {
-                console.log("Got inside convoluted condition");
-            }
     
             let scrollPercent = el.getBoundingClientRect().y / this.browserHeight * 100;
             if (scrollPercent < 18 && scrollPercent > -0.1 && this.scrollDirection == 'down' || scrollPercent < 33 && this.scrollDirection == 'up') {
